@@ -11,10 +11,10 @@ struct GamesListItemView: View {
     var body: some View {
         VStack(alignment: .leading) {
             Image("image-placeholder", bundle: .main)
-                // TODO: fix the issue with .fill affecting the plus button
-                // Guessing the issue is that the next items image is spilling
-                // out of bounds and layered above the button making it impossible
-                // to tap but this problem doesn't exist with .fit
+            // TODO: fix the issue with .fill affecting the plus button
+            // Guessing the issue is that the next items image is spilling
+            // out of bounds and layered above the button making it impossible
+            // to tap but this problem doesn't exist with .fit
                 .resizedToFill(height: 150, contentMode: .fill)
                 .clipped()
             VStack(alignment: .leading, spacing: 16) {
@@ -44,7 +44,7 @@ struct GamesListItemView: View {
     }
 
     var gameDetails: some View {
-        HStack {
+        HStack(spacing: 36) {
             VStack(alignment: .leading, spacing: 8) {
                 Text("14+")
                     .foregroundStyle(.primary)
@@ -53,7 +53,6 @@ struct GamesListItemView: View {
                     .foregroundStyle(.gray)
                     .font(.caption)
             }
-            Spacer()
             VStack(alignment: .leading, spacing: 8) {
                 Text("1.2GB+")
                     .foregroundStyle(.primary)
@@ -62,7 +61,6 @@ struct GamesListItemView: View {
                     .foregroundStyle(.gray)
                     .font(.caption)
             }
-            Spacer()
             VStack(alignment: .leading, spacing: 8) {
                 Text("Eng, +12 more")
                     .foregroundStyle(.primary)
@@ -99,16 +97,22 @@ struct GamesListItemView: View {
                 Spacer()
             }
             Button(action: {
-                debugPrint("Add to library button tapped")
+                debugPrint("get started button pressed")
             }, label: {
-                Circle()
-                    .foregroundStyle(.purple)
-                    .overlay {
-                        Image(systemName: "plus")
-                            .foregroundStyle(.white)
-                    }
+                Image(systemName: "plus")
+                    .foregroundStyle(.white)
+                    .frame(width: 44, height: 44)
+                    .background(
+                        Circle()
+                            .fill(.purple)
+                            .shadow(
+                                color: .purple.opacity(0.5),
+                                radius: 5,
+                                x: 3,
+                                y: 3
+                            )
+                    )
             })
-            .frame(width: 44, height: 44)
         }
     }
 }
