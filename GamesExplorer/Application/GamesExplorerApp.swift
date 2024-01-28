@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+// The @main attribute marks MyFirstApp as the app’s entry point
 @main
 struct GamesExplorerApp: App {
     var body: some Scene {
